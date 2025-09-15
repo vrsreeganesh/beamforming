@@ -12,7 +12,7 @@ plotheight	= 500;
 
 figure(1)
 set(gcf, 'Position', [0 0 plotwidth plotheight]);   % [left bottom width height]
-plot(timeaxis, newmat);
+plot(timeaxis, newmat, "LineWidth", 2);
 xlabel("time, in seconds",  "fontsize", 16);
 ylabel("amplitude",         "fontsize", 16);
 ylim([1.1 * min(newmat(:)), 1.1 * max(newmat(:))]);

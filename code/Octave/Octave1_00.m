@@ -14,7 +14,7 @@ plotheight	= 500;
 
 figure(1)
 set(gcf, 'Position', [0 0 plotwidth plotheight]);   % [left bottom width height]
-plot(timeaxis, newmat);
+plot(timeaxis, newmat, "LineWidth", 2);
 xlabel("time, in seconds",  "fontsize", 16);
 ylabel("amplitude",         "fontsize", 16);
 ylim([1.2 * min(newmat), 1.2 * max(newmat)]);
@@ -22,7 +22,7 @@ saveas(gcf, "../Figures/y-objective1.png");
 
 figure(2);
 set(gcf, 'Position', [0 0 plotwidth plotheight]);   % [left bottom width height]
-plot(waxis, abs(newmatfft) );
+plot(waxis, abs(newmatfft), "LineWidth", 2);
 xlabel("frequency, in Hz",  "fontsize", 16);
 ylabel("magnitude",         "fontsize", 16);
 xlim([min(waxis), max(waxis)]);
@@ -30,7 +30,7 @@ saveas(gcf, "../Figures/abs-yfft-objective1.png");
 
 figure(3);
 set(gcf, 'Position', [0 0 plotwidth plotheight]);   % [left bottom width height]
-plot(waxis, angle(newmatfft) );
+plot(waxis, angle(newmatfft), "LineWidth", 2);
 xlabel("frequency, in Hz",  "fontsize", 16);
 ylabel("phase",         	"fontsize", 16);
 xlim([min(waxis), max(waxis)]);
