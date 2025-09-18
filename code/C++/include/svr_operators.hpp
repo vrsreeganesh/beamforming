@@ -62,18 +62,20 @@ std::vector<T> operator-(const std::vector<T>& a, const T scalar){
                    [scalar](T x){return (x - scalar);});
     return temp;
 }
-// =============================================================================
-// multiplying scalar and double
-
-auto operator*(const std::complex<double> complexscalar, const double doublescalar){
+// scalar operators ============================================================
+auto operator*(const std::complex<double>   complexscalar, 
+               const double                 doublescalar){
     return complexscalar * static_cast<std::complex<double>>(doublescalar);
 }
-auto operator*(const double doublescalar, const std::complex<double> complexscalar){
+auto operator*(const double                 doublescalar, 
+               const std::complex<double>   complexscalar){
     return complexscalar * static_cast<std::complex<double>>(doublescalar);
 }
-auto operator*(const std::complex<double> complexscalar, const int scalar){
+auto operator*(const std::complex<double>   complexscalar, 
+               const int                    scalar){
     return complexscalar * static_cast<std::complex<double>>(scalar);
 }
-auto operator*(const int scalar, const std::complex<double> complexscalar){
+auto operator*(const int                    scalar, 
+               const std::complex<double>   complexscalar){
     return complexscalar * static_cast<std::complex<double>>(scalar);
 }

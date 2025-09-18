@@ -50,3 +50,7 @@ template <typename T>
 auto type(T inputarg){
     std::cout << boost::typeindex::type_id_with_cvr<decltype(inputarg)>().pretty_name()<< "\n";
 }
+// =============================================================================
+#include "svr_shape.hpp"
+// =============================================================================
+#include "svr_sum.hpp"

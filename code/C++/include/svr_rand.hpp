@@ -50,6 +50,31 @@ auto rand(const T               argmin,
 
 }
 // =============================================================================
+auto rand(const vector<int>     dimensions){
+
+    using ReturnType = double;
+
+    // throwing an error if dimension is greater than two 
+    if (dimensions.size() > 2)  {std::cerr << "dimensions are too high\n";}
+
+    // creating random engine
+    static std::random_device rd;   // Seed
+    static std::mt19937 gen(rd());  // Mersenne Twister generator
+    std::uniform_real_distribution<> dist(0.00, 1.00);
+
+    // building the finaloutput
+    vector<vector<ReturnType>> finaloutput;
+    for(int i = 0; i<dimensions[0]; ++i){
+        vector<ReturnType> temp; 
+        for(int j = 0; j<dimensions[1]; ++j)    {temp.push_back(dist(gen));}
+        finaloutput.push_back(std::move(temp));
+    }
+    
+    // returning the finaloutput
+    return finaloutput;
+
+}
+// =============================================================================
 template <typename T>
 auto rand_complex_double(const T                argmin, 
                          const T                argmax, 

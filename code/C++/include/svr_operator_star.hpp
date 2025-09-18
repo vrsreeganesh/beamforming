@@ -9,6 +9,32 @@ auto operator*(T                    scalar,
                    [&scalar](T x){return scalar * x;});
     return temp;
 }
+
+template <typename T1, typename T2>
+auto operator*(T1                       scalar, 
+               const vector<T2>&        inputvector){
+    using T3 = decltype(std::declval<T1>() * std::declval<T2>());
+    vector<T3> temp(inputvector.size());
+    std::transform(inputvector.begin(), 
+                   inputvector.end(), 
+                   temp.begin(), 
+                   [&scalar](auto x){return static_cast<T3>(scalar) * static_cast<T3>(x);});
+    return temp;
+}
+
+// // template <>
+// auto operator*(double doublescalar,
+//                std::vector<std::complex<double>> argvector){
+
+//     std::vector<std::complex<double>> temp(argvector.size());
+//     std::transform(argvector.begin(),
+//                    argvector.end(),
+//                    temp.begin(),
+//                    [&doublescalar](complex<double> x){return static_cast<complex<double>>(doublescalar) * x;});
+//     return temp;
+
+// }
+
 // vector * scalar =============================================================
 template <typename T>
 auto operator*(const vector<T>& inputvector, 
@@ -32,7 +58,8 @@ auto operator*(T                                    scalar,
 }
 // scalar * matrix =============================================================
 template <typename T1, typename T2>
-auto operator*(T1 scalar, const std::vector<std::vector<T2>>& inputMatrix){
+auto operator*(T1 scalar, 
+               const std::vector<std::vector<T2>>& inputMatrix){
     std::vector<std::vector<T2>> temp    {inputMatrix};
     for(int i = 0; i<inputMatrix.size(); ++i){
         std::transform(inputMatrix[i].begin(),
@@ -42,6 +69,7 @@ auto operator*(T1 scalar, const std::vector<std::vector<T2>>& inputMatrix){
     }
     return temp;
 }
+
 // matrix * matrix =============================================================
 template <typename T>
 auto operator*(const std::vector<std::vector<T>>& matA,
@@ -91,11 +119,6 @@ auto matmul(const std::vector<std::vector<T1>>& matA,
     // producing row-column combinations
     std::vector<std::vector<ResultType>> finaloutput(finalnumrows, std::vector<ResultType>(finalnumcols));
     for(int row = 0; row < finalnumrows; ++row){for(int col = 0; col < finalnumcols; ++col){finaloutput[row][col]   = rowcolproduct(row, col);}}
-
-    // // // making a scalar out of that one
-    // PRINTLINE PRINTLINE PRINTLINE PRINTLINE PRINTLINE PRINTLINE 
-    // cout << format("\t\t finaloutput.shape = {}, {}\n", finaloutput.size(), finaloutput[0].size());
-    // if (finaloutput.size() == 1 && finaloutput[0].size() == 1)  {return finaloutput[0][0];}
 
     // returning 
     return finaloutput;

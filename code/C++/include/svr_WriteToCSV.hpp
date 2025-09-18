@@ -1,17 +1,3 @@
-// template <typename T>
-// void fWriteVector(const vector<T>   inputvector, 
-//                   const string      filename){
-
-//     // opening a file
-//     std::ofstream fileobj(filename);
-//     if (fileobj){
-//         for(int i = 0; i<inputvector.size(); ++i){
-//             fileobj << inputvector[i];
-//             if(i!=inputvector.size()-1) {fileobj << ",";}
-//             else                        {fileobj << "\n";}
-//         }
-//     }
-// }
 // =============================================================================
 template <typename T>
 void fWriteVector(const vector<T>&              inputvector, 
@@ -90,46 +76,3 @@ auto fWriteMatrix(const std::vector<std::vector<std::complex<double>>>  inputMat
         cout << format("File-write to {} failed\n", filename);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//  AN EXAMPLE OF USING is_same_v<T, std::complex<double>>======================
-
-// #include <complex>
-// #include <fstream>
-// #include <vector>
-// #include <type_traits>
-
-// template <typename T>
-// void fWriteVector(const std::vector<T>& inputvector, const std::string& filename) {
-//     std::ofstream fileobj(filename, std::ios::out | std::ios::trunc);
-//     if (fileobj) {
-//         for (size_t i = 0; i < inputvector.size(); ++i) {
-//             if constexpr (std::is_same_v<T, std::complex<double>> ||
-//                           std::is_same_v<T, std::complex<float>>) {
-//                 // write as "real,imag"
-//                 fileobj << inputvector[i].real() << "," << inputvector[i].imag();
-//             } else {
-//                 // normal types (double, int, etc.)
-//                 fileobj << inputvector[i];
-//             }
-
-//             if (i != inputvector.size() - 1)
-//                 fileobj << ",";
-//             else
-//                 fileobj << "\n";
-//         }
-//     }
-// }
