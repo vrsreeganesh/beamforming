@@ -22,19 +22,6 @@ auto operator*(T1                       scalar,
     return temp;
 }
 
-// // template <>
-// auto operator*(double doublescalar,
-//                std::vector<std::complex<double>> argvector){
-
-//     std::vector<std::complex<double>> temp(argvector.size());
-//     std::transform(argvector.begin(),
-//                    argvector.end(),
-//                    temp.begin(),
-//                    [&doublescalar](complex<double> x){return static_cast<complex<double>>(doublescalar) * x;});
-//     return temp;
-
-// }
-
 // vector * scalar =============================================================
 template <typename T>
 auto operator*(const vector<T>& inputvector, 

@@ -330,17 +330,6 @@ auto ifft(const std::vector<T> inputvector){
                                                    static_cast<T3>(std::sqrt(inputvector.size()));
                                         })};
 
-        // // calculating inner-product
-        // auto temp   {std::inner_product(bases[i].begin(), bases[i].end(),
-        //                                 inputvector.begin(),
-        //                                 static_cast<T2>(0),
-        //                                 std::plus<T2>(),
-        //                                 [&inputvector](auto arg_bases, auto arg_inputvector){
-        //                                     return static_cast<T2>(arg_bases) *         \
-        //                                            static_cast<T2>(arg_inputvector) /   \
-        //                                            static_cast<T3>((inputvector.size()));
-        //                                 })};
-
         // writing to the final output
         projection_coefficients[i] = std::move(temp);
     }
